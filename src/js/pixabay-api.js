@@ -1,5 +1,4 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://pixabay.com';
 
 export const fetchPhotosByQuery = (searchedQuery, page) => {
   const requestParams = {
@@ -11,5 +10,5 @@ export const fetchPhotosByQuery = (searchedQuery, page) => {
     per_page: 15,
     page: page,
   };
-  return axios.get(`/api/`, { params: requestParams });
+  return axios.get(`https://pixabay.com/api/`, { params: requestParams });
 };
