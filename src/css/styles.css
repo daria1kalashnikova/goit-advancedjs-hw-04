@@ -1,18 +1,201 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
 @import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+@import url('simplelightbox/dist/simple-lightbox.min.css');
+@import url('izitoast/dist/css/iziToast.min.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.gallery-section {
+  padding-top: 36px;
+}
+
+.container {
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+.search-form {
+  width: 600px;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 32px;
+}
+
+.search-input {
+  font-size: 18px;
+  height: 40px;
+  width: 272px;
+  padding-left: 16px;
+  border: 1px solid #303030;
+  border-radius: 4px;
+  background: #fff;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.search-btn {
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 91px;
+  height: 40px;
+  background-color: #4e75ff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.gallery-card {
+  width: calc((100% - 48px) / 3);
+  border: 1px solid #808080;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 152px;
+  object-fit: cover;
+}
+
+.img-info {
+  margin: 4px auto 4px auto;
+}
+
+.img-info-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+}
+
+.img-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-info-title {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.img-info-number {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  border: 3px solid;
+  border-color: #209912 #0000 #0d9770 #0000;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: 1s rotate linear infinite;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  border: 10px solid transparent;
+  border-bottom-color: #0d9770;
+  transform: translate(-10px, 19px) rotate(-35deg);
+}
+.loader:after {
+  border-color: #209912 #0000 #0000 #0000;
+  transform: translate(32px, 3px) rotate(-35deg);
+}
+
+.loader.is-hidden {
+  display: none;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .loader {
+  display: block;
+  margin: 0 auto;
+  color: #4e75ff;
+  font-size: 14px;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  transform: translateZ(0);
+  animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+}
+
+@keyframes mltShdSpin {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em,
+      -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em,
+      -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+      -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em,
+      -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+      -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em,
+      -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+      0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+
+@keyframes round {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
