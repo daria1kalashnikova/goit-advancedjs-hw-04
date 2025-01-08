@@ -84,11 +84,19 @@ const onLoadMoreBtnClick = async event => {
       return;
     }
 
+    const { height: cardHeight } =
+      galleryElement.firstElementChild.getBoundingClientRect();
+
     galleryElement.insertAdjacentHTML(
       'beforeend',
       createGalleryCardsTemplate(response.data.hits)
     );
     bigImage.refresh();
+
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
   } catch (err) {
     console.log(err);
   }
