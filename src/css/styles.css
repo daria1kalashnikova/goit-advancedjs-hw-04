@@ -58,6 +58,25 @@ body {
   flex-direction: row;
 }
 
+.load-more-btn {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  font-weight: 500;
+  background-color: #4e75ff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  margin: 32px auto 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .is-hidden {
   display: none;
 }
