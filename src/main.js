@@ -14,6 +14,9 @@ let bigImage = new SimpleLightbox('.js-gallery a', {
 
 let page = 1;
 let inputValue = '';
+const updateLoaderPosition = () => {
+  loadMoreBtn.insertAdjacentElement('afterend', loaderEl);
+};
 
 const onFormSubmit = async event => {
   try {
@@ -29,9 +32,12 @@ const onFormSubmit = async event => {
     }
 
     galleryElement.innerHTML = '';
-
     page = 1;
+
     loadMoreBtn.classList.add('is-hidden');
+    loaderEl.classList.remove('is-hidden');
+    updateLoaderPosition();
+
     const response = await fetchPhotosByQuery(inputValue, page);
 
     if (response.data.total === 0) {
@@ -69,6 +75,8 @@ formEl.addEventListener('submit', onFormSubmit);
 const onLoadMoreBtnClick = async event => {
   try {
     page++;
+    loaderEl.classList.remove('is-hidden');
+    updateLoaderPosition();
 
     const response = await fetchPhotosByQuery(inputValue, page);
 
@@ -99,5 +107,7 @@ const onLoadMoreBtnClick = async event => {
     });
   } catch (err) {
     console.log(err);
+  } finally {
+    loaderEl.classList.add('is-hidden');
   }
 };
