@@ -23,6 +23,8 @@ const onFormSubmit = async event => {
     event.preventDefault();
 
     inputValue = event.currentTarget.elements.user_query.value.trim();
+    formEl.reset();
+
     if (inputValue === '') {
       iziToast.warning({
         message: 'The input must be filled in!',
@@ -76,6 +78,9 @@ const onLoadMoreBtnClick = async event => {
   try {
     page++;
     loaderEl.classList.remove('is-hidden');
+
+    loadMoreBtn.classList.add('is-hidden');
+    loadMoreBtn.removeEventListener('click', onLoadMoreBtnClick);
     updateLoaderPosition();
 
     const response = await fetchPhotosByQuery(inputValue, page);
@@ -105,6 +110,8 @@ const onLoadMoreBtnClick = async event => {
       top: cardHeight * 2,
       behavior: 'smooth',
     });
+    loadMoreBtn.classList.remove('is-hidden');
+    loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
   } catch (err) {
     console.log(err);
   } finally {
