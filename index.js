@@ -1,30 +1,30 @@
-import{a as b,S as v,i as m}from"./assets/vendor-B6jJ9_I0.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))g(t);new MutationObserver(t=>{for(const i of t)if(i.type==="childList")for(const d of i.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&g(d)}).observe(document,{childList:!0,subtree:!0});function s(t){const i={};return t.integrity&&(i.integrity=t.integrity),t.referrerPolicy&&(i.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?i.credentials="include":t.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function g(t){if(t.ep)return;t.ep=!0;const i=s(t);fetch(t.href,i)}})();const f=r=>r.reduce((e,s)=>e+`<li class="gallery-card">
-                <a class="gallery-link" href="${s.largeImageURL}">
+import{a as v,S as b,i as u}from"./assets/vendor-B6jJ9_I0.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))f(s);new MutationObserver(s=>{for(const r of s)if(r.type==="childList")for(const m of r.addedNodes)m.tagName==="LINK"&&m.rel==="modulepreload"&&f(m)}).observe(document,{childList:!0,subtree:!0});function t(s){const r={};return s.integrity&&(r.integrity=s.integrity),s.referrerPolicy&&(r.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?r.credentials="include":s.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function f(s){if(s.ep)return;s.ep=!0;const r=t(s);fetch(s.href,r)}})();const p=n=>n.reduce((e,t)=>e+`<li class="gallery-card">
+                <a class="gallery-link" href="${t.largeImageURL}">
                 <img
                   class="gallery-img"
-                  src="${s.webformatURL}"
-                  alt="${s.tags}"
+                  src="${t.webformatURL}"
+                  alt="${t.tags}"
                 />
                 </a>
                 <div class="img-info">
                   <ul class="img-info-list">
                      <li class="img-info-item">
                         <span class="img-info-title" >Likes</span>
-                        <span class="img-info-number">${s.likes}</span>
+                        <span class="img-info-number">${t.likes}</span>
                     </li>
                     <li class="img-info-item">
                         <span class="img-info-title" >Views</span>
-                        <span class="img-info-number">${s.views}</span>
+                        <span class="img-info-number">${t.views}</span>
                     </li>
                     <li class="img-info-item">
                         <span class="img-info-title" >Comments</span>
-                        <span class="img-info-number">${s.comments}</span>
+                        <span class="img-info-number">${t.comments}</span>
                     </li>
                     <li class="img-info-item">
                         <span class="img-info-title" >Downloads</span>
-                         <span class="img-info-number">${s.downloads}</span>
+                         <span class="img-info-number">${t.downloads}</span>
                     </li>
                   </ul>
                 </div>
-            </li>`,""),p=(r,e)=>{const s={key:"44900327-ed76a6d24ccf74b976808d529",q:r,image_type:"photo",orientation:"horizontal",safesearch:!0,per_page:15,page:e};return b.get("https://pixabay.com/api/",{params:s})},h=document.querySelector(".js-search-form"),a=document.querySelector(".js-gallery"),o=document.querySelector(".js-loader"),n=document.querySelector(".js-load-more-btn");let y=new v(".js-gallery a",{captionsData:"alt",captionDelay:250}),c=1,l="";const L=()=>{n.insertAdjacentElement("afterend",o)},w=async r=>{try{if(r.preventDefault(),l=r.currentTarget.elements.user_query.value.trim(),l===""){m.warning({message:"The input must be filled in!",position:"topRight"});return}a.innerHTML="",c=1,n.classList.add("is-hidden"),o.classList.remove("is-hidden"),L();const e=await p(l,c);if(e.data.total===0){m.warning({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"}),a.innerHTML="",h.reset();return}if(a.innerHTML=f(e.data.hits),y.refresh(),e.data.hits.length<15){n.classList.add("is-hidden"),n.removeEventListener("click",u);return}n.classList.remove("is-hidden"),n.addEventListener("click",u)}catch(e){console.log(e)}finally{o.classList.add("is-hidden")}};h.addEventListener("submit",w);const u=async r=>{try{c++,o.classList.remove("is-hidden"),L();const e=await p(l,c);if(e.data.hits.length===0){n.classList.add("is-hidden"),n.removeEventListener("click",u),m.warning({message:"We`re sorry, but you`ve reached the end of search results.",position:"topRight"});return}const{height:s}=a.firstElementChild.getBoundingClientRect();a.insertAdjacentHTML("beforeend",f(e.data.hits)),y.refresh(),window.scrollBy({top:s*2,behavior:"smooth"})}catch(e){console.log(e)}finally{o.classList.add("is-hidden")}};
+            </li>`,""),h=(n,e)=>{const t={key:"44900327-ed76a6d24ccf74b976808d529",q:n,image_type:"photo",orientation:"horizontal",safesearch:!0,per_page:15,page:e};return v.get("https://pixabay.com/api/",{params:t})},g=document.querySelector(".js-search-form"),a=document.querySelector(".js-gallery"),l=document.querySelector(".js-loader"),i=document.querySelector(".js-load-more-btn");let y=new b(".js-gallery a",{captionsData:"alt",captionDelay:250}),d=1,c="";const L=()=>{i.insertAdjacentElement("afterend",l)},w=async n=>{try{if(n.preventDefault(),c=n.currentTarget.elements.user_query.value.trim(),g.reset(),c===""){u.warning({message:"The input must be filled in!",position:"topRight"});return}a.innerHTML="",d=1,i.classList.add("is-hidden"),l.classList.remove("is-hidden"),L();const e=await h(c,d);if(e.data.total===0){u.warning({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"}),a.innerHTML="",g.reset();return}if(a.innerHTML=p(e.data.hits),y.refresh(),e.data.hits.length<15){i.classList.add("is-hidden"),i.removeEventListener("click",o);return}i.classList.remove("is-hidden"),i.addEventListener("click",o)}catch(e){console.log(e)}finally{l.classList.add("is-hidden")}};g.addEventListener("submit",w);const o=async n=>{try{d++,l.classList.remove("is-hidden"),i.classList.add("is-hidden"),i.removeEventListener("click",o),L();const e=await h(c,d);if(e.data.hits.length===0){i.classList.add("is-hidden"),i.removeEventListener("click",o),u.warning({message:"We`re sorry, but you`ve reached the end of search results.",position:"topRight"});return}const{height:t}=a.firstElementChild.getBoundingClientRect();a.insertAdjacentHTML("beforeend",p(e.data.hits)),y.refresh(),window.scrollBy({top:t*2,behavior:"smooth"}),i.classList.remove("is-hidden"),i.addEventListener("click",o)}catch(e){console.log(e)}finally{l.classList.add("is-hidden")}};
 //# sourceMappingURL=index.js.map
